@@ -16,7 +16,7 @@ client.ping({
      }
  });
 
- 
+
 app.use(bodyParser.json())
 app.set( 'port', process.env.PORT || 3001 );
 app.use( express.static( path.join( __dirname, 'public' )));
@@ -41,10 +41,10 @@ app.get('/v2', function(req, res){
 })
 
 app.get('/search', function (req, res){
-  
+
   let body = {
     size: 200,
-    from: 0, 
+    from: 0,
     query: {
       match: {
           name: req.query['q']
@@ -52,7 +52,7 @@ app.get('/search', function (req, res){
     }
   }
 
-  client.search({index:'scotch.io-tutorial',  body:body, type:'cities_list'})
+  client.search({index:'parts_file',  body:body, type:'parts_list'})
   .then(results => {
     res.send(results.hits.hits);
   })
@@ -60,7 +60,7 @@ app.get('/search', function (req, res){
     console.log(err)
     res.send([]);
   });
-  
+
 })
 
 

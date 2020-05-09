@@ -14,7 +14,7 @@ client.ping({
  });
 
  client.indices.create({
-     index: 'scotch.io-tutorial'
+     index: 'parts_file'
  }, function(error, response, status) {
      if (error) {
          console.log(error);
@@ -24,24 +24,23 @@ client.ping({
  });
 
 
-const cities = require('./cities.json');
+const cities = require('./parts.json');
 var bulk = [];
-cities.forEach(city =>{
-  bulk.push({index:{ 
-                _index:"scotch.io-tutorial", 
-                _type:"cities_list",
+parts.forEach(part =>{
+  bulk.push({index:{
+                _index:"parts_file",
+                _type:"parts_list",
             }
-          
+
         })
   bulk.push(city)
 })
 
 
-client.bulk({body:bulk}, function( err, response  ){ 
-        if( err ){ 
-            console.log("Failed Bulk operation".red, err) 
-        } else { 
-            console.log("Successfully imported %s".green, bulk.length); 
-        } 
-    }); 
-
+client.bulk({body:bulk}, function( err, response  ){
+        if( err ){
+            console.log("Failed Bulk operation".red, err)
+        } else {
+            console.log("Successfully imported %s".green, bulk.length);
+        }
+    });

@@ -2,7 +2,8 @@
 <div class="container" id="app">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h1>Search Cities around the world</h1>
+          <center><img src="https://i.imgur.com/LFqsPJZ.jpg" style="width:400px;height:300px;"></center>
+            <center><h2>Search Parts Stores:</h2></center>
         </div>
     </div>
     <div class="row">
@@ -20,10 +21,10 @@
         <div class="col-md-3" v-for="result in results">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ result._source.name }}, {{ result._source.country }} 
+                    {{ result._source.Make }}, {{ result._source.Model }}, {{ result._source.Year }}
                 </div>
                 <div class="panel-body">
-                    <p>lat:{{ result._source.lat }}, long: {{ result._source.lng }}.</p>
+                    <p>Part:{{ result._source.Part }}, URL: {{ result._source.URL }}.</p>
                 </div>
             </div>
         </div>
@@ -45,7 +46,7 @@
                 axios.get("http://127.0.0.1:3001/search?q=" + this.query)
                     .then(response => {
                         this.results = response.data;
-                      
+
                     })
             }
         },
@@ -68,7 +69,7 @@
         border-radius: 25px;
         border: 1px solid #ccc;
     }
-    
+
     .search-form .form-group input.form-control {
         padding-right: 20px;
         border: 0 none;
@@ -76,31 +77,31 @@
         box-shadow: none;
         display: block;
     }
-    
+
     .search-form .form-group input.form-control::-webkit-input-placeholder {
         display: none;
     }
-    
+
     .search-form .form-group input.form-control:-moz-placeholder {
         /* Firefox 18- */
         display: none;
     }
-    
+
     .search-form .form-group input.form-control::-moz-placeholder {
         /* Firefox 19+ */
         display: none;
     }
-    
+
     .search-form .form-group input.form-control:-ms-input-placeholder {
         display: none;
     }
-    
+
     .search-form .form-group:hover,
     .search-form .form-group.hover {
         width: 100%;
         border-radius: 4px 25px 25px 4px;
     }
-    
+
     .search-form .form-group span.form-control-feedback {
         position: absolute;
         top: -1px;
